@@ -1,7 +1,9 @@
-# Oracle GoldenGate 21.3 Microservices Edition Container Images
+# Oracle GoldenGate 21.4 Microservices Big Data Edition Container Images
 
 Sample container image build files to provide an installation of Oracle GoldenGate for DevOps users.
 These instructions apply to building container images for Oracle GoldenGate version 21c.
+
+This is a custom creation/modification from Alex Lima and it was not deployed by Oracle Corporation.
 
 ## Contents
 
@@ -19,7 +21,7 @@ These instructions apply to building container images for Oracle GoldenGate vers
 
 This project was tested with:
 
-* Oracle GoldenGate 21.3.0.0.0 Microservices for Oracle on Linux x86-64
+* Oracle GoldenGate 21.4.0.0.0 Microservices Big Data for Oracle on Linux x86-64 
 
 Support for Oracle GoldenGate Classic Architecture is not provided.
 
@@ -27,7 +29,7 @@ Support for Oracle GoldenGate Classic Architecture is not provided.
 
 All shell commands in this document assume the usage of Bash shell.
 
-For more information about Oracle GoldenGate please see the [Oracle GoldenGate 21.3 On-line Documentation](https://docs.oracle.com/en/middleware/goldengate/core/21.3/index.html).
+For more information about Oracle GoldenGate please see the [Oracle GoldenGate 21.4 On-line Documentation](https://docs.oracle.com/en/middleware/goldengate/core/21.3/index.html).
 
 ## Build an Oracle GoldenGate Container Image
 
@@ -35,11 +37,11 @@ Once you have downloaded the Oracle GoldenGate software, a container image can b
 A single `--build-arg` is needed to indicate the GoldenGate installer which was downloaded.
 
 ```sh
-$ docker build --tag=oracle/goldengate:21.3.0.0.0 \
-                --build-arg INSTALLER=213000_fbo_ggs_Linux_x64_Oracle_services_shiphome.zip .
+$ docker build --tag=oracle/goldengateBD:21.4.0.0.0 \
+                --build-arg INSTALLER=214000_ggs_Linux_x64_BigData_services_shiphome.zip .
 Sending build context to Docker daemon
 ...
-Successfully tagged oracle/goldengate:21.3.0.0.0
+Successfully tagged oracle/goldengateBD:21.4.0.0.0
 ```
 
 ## Running Oracle GoldenGate in a Container
@@ -79,6 +81,51 @@ $ docker run oracle/goldengate:21.3.0.0.0
 ----------------------------------------------------------------------------------
 ...
 ```
+
+### Creation from Alex Lima  ### EOF
+docker build -t aoflima44/goldengate214mabda:21.4 --build-arg INSTALLER=214000_ggs_Linux_x64_BigData_services_shiphome.zip .
+
+
+alexlima@alexlima-mac 21c_BigData % pwd
+/Users/alexlima/Documents/GitHub/GoldenGate/21c_BigData
+alexlima@alexlima-mac 21c_BigData % docker build -t aoflima44/goldengate214mabda:21.4 --build-arg INSTALLER=214000_ggs_Linux_x64_BigData_services_shiphome.zip .
+[+] Building 99.0s (13/13) FINISHED
+ => [internal] load build definition from Dockerfile                                                                                                                                                   0.0s
+ => => transferring dockerfile: 1.37kB                                                                                                                                                                 0.0s
+ => [internal] load .dockerignore                                                                                                                                                                      0.0s
+ => => transferring context: 2B                                                                                                                                                                        0.0s
+ => [internal] load metadata for docker.io/library/oraclelinux:8                                                                                                                                       0.9s
+ => [auth] library/oraclelinux:pull token for registry-1.docker.io                                                                                                                                     0.0s
+ => [1/7] FROM docker.io/library/oraclelinux:8@sha256:4126784fc096fa59538deae1917a143b9c40f9712a76b17f1d7c599b7953d33a                                                                                 0.0s
+ => [internal] load build context                                                                                                                                                                      8.0s
+ => => transferring context: 346.21MB                                                                                                                                                                  8.0s
+ => CACHED [2/7] RUN           : 214000_ggs_Linux_x64_BigData_services_shiphome.zip                                                                                                                    0.0s
+ => [3/7] COPY          install-*.sh      /tmp/                                                                                                                                                        0.2s
+ => [4/7] COPY          214000_ggs_Linux_x64_BigData_services_shiphome.zip      /tmp/installer.zip                                                                                                     0.7s
+ => [5/7] COPY          bin/              /usr/local/bin/                                                                                                                                              0.0s
+ => [6/7] RUN           bash -c  /tmp/install-prerequisites.sh &&               bash -c  /tmp/install-deployment.sh    &&               rm   -fr /tmp/*   /etc/nginx                                  75.9s
+ => [7/7] COPY          nginx/            /etc/nginx/                                                                                                                                                  0.0s
+ => exporting to image                                                                                                                                                                                13.2s
+ => => exporting layers                                                                                                                                                                               13.1s
+ => => writing image sha256:dd8ce48f91877763a68429926d1ac6fd2de92214dbb47b875bc4140f5784ed89                                                                                                           0.0s
+ => => naming to docker.io/aoflima44/goldengate214mabda:21.4                                                                                                                                           0.0s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+alexlima@alexlima-mac 21c_BigData %
+
+
+docker run -dit \
+--name goldengate214mabda \
+--hostname=ogg214ma-416 \
+--memory=1024M \
+--privileged \
+-v ${PWD}/cert:/etc/nginx/cert:rw \
+-p 416:443/tcp \
+-e OGG_ADMIN_PWD=WwelcomE##123 \
+-e OGG_DEPLOYMENT=oggbda \
+aoflima44/goldengate214mabda:21.4
+
+###  << EOF
 
 See the following sections for additional details.
 
