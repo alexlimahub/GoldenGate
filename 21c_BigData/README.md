@@ -1,9 +1,9 @@
 # Oracle GoldenGate 21.4 Microservices Big Data Edition Container Images
 
-Sample container image build files to provide an installation of Oracle GoldenGate for DevOps users.
-These instructions apply to building container images for Oracle GoldenGate version 21c.
+Sample container image build files to provide an installation of Oracle GoldenGate Bid Data for DevOps users.
+These instructions apply to building container images for Oracle GoldenGate Big Data version 21c.
 
-This is a custom creation/modification from Alex Lima and it was not deployed by Oracle Corporation.
+This is a custom creation/modification from Alex Lima and it was not deployed by Oracle Corporation.  
 
 ## Contents
 
@@ -25,11 +25,11 @@ This project was tested with:
 
 Support for Oracle GoldenGate Classic Architecture is not provided.
 
-**IMPORTANT:** You must download the installation binaries of Oracle GoldenGate. You only need to provide the binaries for the version you plan to install. The binaries can be downloaded from the [Oracle Technology Network](http://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). Do not decompress the Oracle GoldenGate ZIP file. The container build process will handle that for you. You also must have Internet connectivity when building the container image for the package manager to perform additional software installations.
+**IMPORTANT:** You must download the installation binaries of Oracle GoldenGate Big Data. You only need to provide the binaries for the version you plan to install. The binaries can be downloaded from the [Oracle Technology Network](http://www.oracle.com/technetwork/middleware/goldengate/downloads/index.html). Do not decompress the Oracle GoldenGate ZIP file. The container build process will handle that for you. You also must have Internet connectivity when building the container image for the package manager to perform additional software installations.
 
 All shell commands in this document assume the usage of Bash shell.
 
-For more information about Oracle GoldenGate please see the [Oracle GoldenGate 21.4 On-line Documentation](https://docs.oracle.com/en/middleware/goldengate/core/21.3/index.html).
+For more information about Oracle GoldenGate Big Data please see the [Oracle GoldenGate Big Data 21c On-line Documentation](https://docs.oracle.com/en/middleware/goldengate/big-data/index.html).
 
 ## Build an Oracle GoldenGate Container Image
 
