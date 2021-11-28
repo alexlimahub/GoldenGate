@@ -58,7 +58,7 @@ $ docker run \
     -v [<host mount point>:]/u02 \
     -v [<host mount point>:]/u03 \
     -v [<host mount point>:]/etc/nginx/cert \
-    oracle/goldengate:21.3.0.0.0
+    oracle/goldengate:21.4.0.0.0
 ```
 
 Parameters:
@@ -75,7 +75,7 @@ Parameters:
 All parameters are optional, so the following command will work, too:
 
 ```sh
-$ docker run oracle/goldengate:21.3.0.0.0
+$ docker run oracle/goldengate:21.4.0.0.0
 ----------------------------------------------------------------------------------
 --  Password for OGG administrative user 'oggadmin' is 'XU2k7cMastmt-DJKs'
 ----------------------------------------------------------------------------------
