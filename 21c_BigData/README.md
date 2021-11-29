@@ -99,6 +99,8 @@ docker run -dit \
 -e OGG_DEPLOYMENT=oggbda \
 aoflima44/goldengate214mabda:21.4
 
+Once that's is completed, open your browser and go to:  https://localhost:416
+
 ```
 
 See the following sections for additional details.
