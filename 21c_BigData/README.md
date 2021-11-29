@@ -82,7 +82,7 @@ $ docker run oracle/goldengate:21.4.0.0.0
 ...
 ```
 
-### Creation from Alex Lima  ### 
+## Image Creation from Alex Lima  ##
 
 ```sh
 docker build -t aoflima44/goldengate214mabda:21.4 --build-arg INSTALLER=214000_ggs_Linux_x64_BigData_services_shiphome.zip .
